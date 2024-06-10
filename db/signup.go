@@ -19,7 +19,7 @@ func SignUp(sig models.SignUp) error {
 
 	defer Db.Close()
 
-	sentence := fmt.Sprintf("INTO users (User_Email, User_UUID, User_DateAdd) VALUES ('%s','%s', %s)", sig.UserEmail, sig.UserUUID, tools.MySQLDate())
+	sentence := fmt.Sprintf("INSERT INTO users (User_Email, User_UUID, User_DateAdd) VALUES ('%s','%s', '%s')", sig.UserEmail, sig.UserUUID, tools.MySQLDate())
 	fmt.Println(sentence)
 
 	_, err = Db.Exec(sentence)
